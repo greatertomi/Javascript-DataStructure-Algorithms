@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Linear Search</title>
+  </head>
+  <script>
+    const linearSearch = (arr, num) => {
+      for (let i = 0; i < arr.length; i++) {
+        if (num == arr[i]) return i;
+      }
+      return -1;
+    };
+
+    console.log(linearSearch([1, 4, 5, 6, 9, 3, 21, 14, 16], 10));
+  </script>
+</html>
