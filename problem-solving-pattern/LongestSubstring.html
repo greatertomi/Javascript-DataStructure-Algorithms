@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Max Subarray Sum</title>
+  </head>
+  <script>
+    // Sliding Window - findLongestSubstring
+    // Write a function called findLongestSubstring, which accepts a string and
+    // returns the length of the longest substring with all distinct characters.
+
+    // My solution
+    const findLongestSubstring = str => {
+      let distinctCount = 0;
+      let normStr = str.toLowerCase();
+      let distinctCountArr = [];
+
+      for (let i = 0; i < str.length; i++) {
+        if (normStr[i] == normStr[i + 1]) {
+          distinctCountArr.push(distinctCount);
+          distinctCount = 0;
+        } else {
+          ++distinctCount;
+        }
+      }
+      let sortedDistinctArr = distinctCountArr.sort();
+      return sortedDistinctArr[distinctCountArr.length - 1];
+    };
+
+    // Another Solution
+    function findLongestSubstringVersion2(str) {
+      const obj = {};
+      let maxLen = 0;
+      let start = 0;
+
+      for (let i = 0; i < str.length; i++) {
+        if (obj[str[i]]) {
+          start = Math.max(start, obj[str[i]]);
+          console.log(start);
+        }
+        obj[str[i]] = i + 1;
+        maxLen = Math.max(maxLen, i - start + 1);
+      }
+
+      return maxLen;
+    }
+
+    findLongestSubstringVersion2('happybirthdday');
+    // console.log(findLongestSubstring('HappyBirthdday'));
+    // console.log(findLongestSubstringVersion2('happybirthdday'));
+  </script>
+</html>

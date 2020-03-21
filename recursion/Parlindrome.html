@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Is Parlindrome</title>
+  </head>
+  <script>
+    // Write a recursive function called isPalindrome which returns true
+    // if the string passed to it is a palindrome (reads the same forward and backward).
+    // Otherwise it returns false.
+
+    const recursiveIsParlindrome = str => {
+      if (!str.length) return true;
+
+      if (str[0] !== str[str.length - 1]) return false;
+
+      return recursiveIsParlindrome(str.slice(1, -1));
+      // console.log(str.slice(1, -1));
+    };
+
+    const isParlindrome = str => {
+      for (let i = 0; i < str.length / 2; i++) {
+        if (str[i] !== str[str.length - 1 - i]) return false;
+      }
+
+      return true;
+    };
+
+    // recursiveIsParlindrome('youtubr');
+    // console.log(isParlindrome('wasitacatisaw'));
+    console.log(recursiveIsParlindrome('wasitacatisaw'));
+  </script>
+</html>
