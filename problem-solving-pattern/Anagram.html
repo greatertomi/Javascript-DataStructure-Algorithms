@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <title>Anagram</title>
+</head>
+<script>
+  let speech = 'atm';
+  let speech2 = 'mat';
+
+  // Colt Steele Solution
+  const validAnagram = (first, second) => {
+    if (first.length !== second.length) {
+      return false;
+    }
+
+    const lookup = {};
+
+    for (let i = 0; i < first.length; i++) {
+      let letter = first[i];
+
+      lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
+    }
+
+    for (let i = 0; i < second.length; i++) {
+      let letter = second[i];
+
+      if (!lookup[letter]) {
+        return false;
+      } else {
+        lookup[letter] -= 1;
+      }
+    }
+    return true;
+  }
+
+  // My Solution
+  const anagramChecker = (string1, string2) => {
+    let speechArray = string1.toLowerCase().split('').sort();
+    let speechArray2 = string2.toLowerCase().split('').sort();
+
+    let frequencyCounter1 = {}
+    let frequencyCounter2 = {}
+
+    for (let i of speechArray) {
+      frequencyCounter1[i] = (frequencyCounter1[i] || 0) + 1;
+    }
+
+    for (let i of speechArray2) {
+      frequencyCounter2[i] = (frequencyCounter2[i] || 0) + 1
+    }
+
+    for (let key in frequencyCounter1) {
+      // console.log(key);
+      if (!(key in frequencyCounter2)) {
+        return false;
+        console.log('Printee')
+      }
+
+      if (frequencyCounter1[key] != frequencyCounter2[key]) {
+        return false;
+      }
+    }
+    return true;
+    // console.log(frequencyCounter1)
+  };
+
+  console.log(anagramChecker(speech, speech2));
+  console.log(validAnagram(speech, speech2));
+</script>
+
+</html>

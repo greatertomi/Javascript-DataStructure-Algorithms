@@ -1,22 +1,14 @@
 <html>
-  <head>
-    <title>Are There Duplicates</title>
-  </head>
-  <script>
-    // Frequency Counter - areThereDuplicates
-    // Implement a function called areThereDuplicates which accepts a variable number of arguments,
-    // and checks whether there are any duplicates among the arguments passed in.
 
-    // Restrictions: Time Complexity - O(n), Space Complexity - O(n)
-    const areThereDuplicates = (...args) => {
-      args.sort();
+<head>
+  <title>Are There Duplicates</title>
+</head>
+<script>
+  // Multiple Pointers - areThereDuplicates
+  // Implement a function called, areThereDuplicates which accepts a variable number of arguments,
+  // and checks whether there are any duplicates among the arguments passed in.
 
-      for (i = 0; i < args.length; i++) {
-        if (args[i] == args[i + 1]) return true;
-      }
-      return false;
-    };
-
-    console.log(areThereDuplicates('hello', 'mine', 'hell', 'midget', 'blep'));
-  </script>
-</html>
+  // Restrictions:
+  // Time Complexity - O(n log n)
+  // Space Complexity - O(1)
+</script>

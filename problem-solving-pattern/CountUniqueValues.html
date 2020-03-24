@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title>Count unique values</title>
+</head>
+<script>
+  let numArray = [1, 1, 1, 1, 2, 2, 3];
+
+  // Count the number of unique values in an array
+  const countUniqueValues = (arr) => {
+    let first = 0;
+    let second = 1;
+
+    if (arr.length === 0) return 0;
+
+    while (second < arr.length) {
+      if (arr[first] !== arr[second]) {
+        first++;
+        arr[first] = arr[second];
+      }
+      ++second;
+    }
+    return first + 1;
+  };
+
+  console.log(countUniqueValues(numArray));
+</script>
+
+</html>

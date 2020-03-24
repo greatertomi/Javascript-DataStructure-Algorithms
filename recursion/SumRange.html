@@ -1,0 +1,16 @@
+<html>
+
+<head>
+  <title>Sum Range</title>
+</head>
+<script>
+  // Calculates the sum of all numbers till parameter
+  const sumRange = (num) => {
+    if (num === 1) return 1;
+    return num + sumRange(num - 1);
+  }
+
+  console.log(sumRange(5));
+</script>
+
+</html>

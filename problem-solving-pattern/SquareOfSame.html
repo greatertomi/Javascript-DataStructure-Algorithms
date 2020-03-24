@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Square of same</title>
+  </head>
+  <script>
+    let value1 = [1, 2, 3];
+    let value2 = [4, 1, 9];
+
+    /* This function returns true if every value in the array has it's corresponding
+      square in the second array */
+    // Time Complexity - O(n**2)
+    const checkSameness = (array1, array2) => {
+      let correntCounter = 0;
+      let arrayLength;
+      if (array1.length !== array2.length) {
+        return false;
+      } else {
+        arrayLength = array1.length;
+        for (let i of array1) {
+          for (let j of array2) {
+            if (i * i == j) {
+              array2.splice(array2.indexOf(j), 1);
+              ++correntCounter;
+            }
+          }
+        }
+      }
+
+      if (correntCounter === arrayLength) return true;
+      else return false;
+    };
+
+    // Time Complexity - O(n)
+    const optimisedCheckSameness = (array1, array2) => {
+      if (array1.length !== array2.length) {
+        return false;
+      }
+
+      let frequencyCounter1 = {};
+      let frequencyCounter2 = {};
+
+      for (let val of array1) {
+        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+      }
+
+      for (let val of array2) {
+        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+      }
+
+      for (let key in frequencyCounter1) {
+        if (!(key ** 2 in frequencyCounter2)) {
+          return false;
+        }
+
+        if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    console.log(optimisedCheckSameness(value1, value2));
+  </script>
+</html>
