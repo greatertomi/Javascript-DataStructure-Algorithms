@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Quick Sort</title>
+  </head>
+  <script>
+    // Returns the number at a particular position
+    const getDigit = (num, place) => {
+      return Math.floor((Math.abs(num) / Math.pow(10, i)) % 10);
+    };
+
+    // Returns how many digits are in a number
+    const digitCount = num => {
+      if (num == 0) return 1;
+      return Math.floor(Math.log10(Math.abs(num))) + 1;
+    };
+
+    // Returns the number that has the most digit from a digit of numbers
+    const mostDigits = nums => {
+      let maxDigits = 0;
+      for (let i = 0; i < nums.length; i++) {
+        maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+      }
+      return maxDigits;
+    };
+
+    const radixSort = nums => {
+      let maxDigitCount = mostDigits(nums);
+      for (let k = 0; k < maxDigitCount; k++) {
+        let digitBuckets = Array.from({ length: 10 }, () => []);
+        for (var i = 0; i < nums.length; i++) {
+          let digit = getDigit(nums[i], k);
+          digitBuckets[digit].push(nums[i]);
+        }
+        nums = [].concat(...digitBuckets);
+      }
+      return nums;
+    };
+    // This creates an array of 10 empty arrays
+    console.log(radixSort([12, 234, 6, 2839, 3281, 590, 420, 869]));
+  </script>
+</html>
