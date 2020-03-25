@@ -17,6 +17,7 @@
         this.length = 0;
       }
 
+      // Adds a new value to the end of the list
       push(val) {
         let newNode = new Node(val);
         if (!this.head) {
@@ -30,14 +31,7 @@
         return this;
       }
 
-      traverse() {
-        let current = this.head;
-        while (current) {
-          console.log(current.val);
-          current = current.next;
-        }
-      }
-
+      // Removes the value at the end of the list
       pop() {
         if (!this.head) return undefined;
         let current = this.head;
